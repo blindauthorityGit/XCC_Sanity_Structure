@@ -8,6 +8,12 @@ export default {
 
     fields: [
         {
+            name: "titleApp",
+            title: "Titel der App",
+            type: "string",
+            description: "erscheint im Browser",
+        },
+        {
             title: "Logo Upload",
             name: "logoUpload",
             type: "image",
@@ -72,6 +78,50 @@ export default {
             name: "richtext",
             type: "array",
             of: [{ type: "block" }],
+        },
+        {
+            title: "Social Media",
+            name: "socialmedia_global",
+            type: "document",
+            description: "Social Media Accounts für Startseite",
+            fields: [
+                { title: "Facebook", name: "facebook", type: "string", description: "Link zu ihrem Facebook Profil" },
+                {
+                    title: "Instagram",
+                    name: "instagram",
+                    type: "string",
+                    description: "Link zu ihrem Instagram Profil",
+                    initialValue: "",
+                },
+                {
+                    title: "Twitter",
+                    name: "twitter",
+                    type: "string",
+                    description: "Link zu ihrem Twitter Profil",
+                    initialValue: "",
+                },
+                {
+                    title: "Whatsapp",
+                    name: "whatsapp",
+                    type: "string",
+                    description: "Ihre WhatsApp Nummer",
+                    initialValue: "",
+                },
+                {
+                    title: "LinkedIn",
+                    name: "linkedin",
+                    type: "string",
+                    description: "Link zu Ihrem LinkedIn Profil",
+                    initialValue: "",
+                },
+                {
+                    title: "Youtube",
+                    name: "youtube",
+                    type: "string",
+                    description: "Link zu Ihrem Youtube Kanal",
+                    initialValue: "",
+                },
+            ],
         },
     ],
 };

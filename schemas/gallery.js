@@ -4,31 +4,74 @@ export default {
     title: "Gallery",
     fields: [
         {
-            name: "title",
+            title: "Title entry",
+            name: "titel_intern",
             type: "string",
-            title: "Titel",
+            initialValue: "",
         },
         {
-            title: "Color List",
-            description: "Farbe des Buttons",
-            name: "colorlist",
-            type: "colorlist", // required
-            options: {
-                borderradius: {
-                    outer: "100%",
-                    inner: "100%",
-                },
-                list: [
-                    { title: "Rot", value: "#7f243d" },
-                    { title: "Blau", value: "#272d45" },
-                    { title: "Orange", value: "#F29E4C" },
-                    { title: "Gruen", value: "#16DB93" },
-                    { title: "Hellgrau", value: "#e4e4e4" },
-                    { title: "Schwarz", value: "#000000" },
-                    { title: "Weiss", value: "white" },
-                ],
-            },
+            name: "orderClass",
+            title: "Order",
+            type: "number",
+            description: "Button order. Example: 0 = first button",
         },
+        {
+            title: "Button Settings",
+            name: "button_settings",
+            type: "document",
+            initialValue: {
+                box: false,
+                border: false,
+                icon: true,
+            },
+            fields: [
+                {
+                    title: "Title button",
+                    name: "titel",
+                    type: "string",
+                    initialValue: "",
+                },
+                {
+                    title: "Color List",
+                    description: "Button color",
+                    type: "colorlist", // required
+                    options: {
+                        borderradius: {
+                            outer: "100%",
+                            inner: "100%",
+                        },
+                        list: [
+                            { title: "Rot", value: "#7f243d" },
+                            { title: "Blau", value: "#272d45" },
+                            { title: "Orange", value: "#F29E4C" },
+                            { title: "Gruen", value: "#16DB93" },
+                            { title: "Hellgrau", value: "#e4e4e4" },
+                            { title: "Schwarz", value: "#000000" },
+                            { title: "Weiss", value: "white" },
+                        ],
+                    },
+                },
+                {
+                    name: "border",
+                    type: "boolean",
+                    title: "Border",
+                    description: "dark border for button",
+                },
+                {
+                    name: "box",
+                    type: "boolean",
+                    title: "1/2 Width",
+                    description: "half width button",
+                },
+                {
+                    name: "icon",
+                    type: "boolean",
+                    title: "Show Icon",
+                    description: "Show icon in button",
+                },
+            ],
+        },
+
         {
             name: "images",
             type: "array",
@@ -45,7 +88,7 @@ export default {
                         {
                             name: "beschreibung",
                             type: "string",
-                            title: "Beschreibung",
+                            title: "description",
                         },
                         {
                             name: "alt",
@@ -57,6 +100,19 @@ export default {
             ],
             options: {
                 layout: "grid",
+            },
+        },
+        {
+            title: "Galerie Layout",
+            name: "layout",
+            type: "string",
+
+            options: {
+                list: [
+                    { title: "Carousel", value: "carousel" },
+                    { title: "Grid", value: "grid" },
+                ], // <-- predefined values
+                layout: "radio", // <-- defaults to 'dropdown'
             },
         },
         {
@@ -85,19 +141,19 @@ export default {
         //     description: "Should we enable zooming of images?",
         // },
     ],
-    preview: {
-        select: {
-            images: "images",
-            image: "images.0",
-        },
-        prepare(selection) {
-            const { images, image } = selection;
+    // preview: {
+    //     select: {
+    //         images: "images",
+    //         image: "images.0",
+    //     },
+    //     prepare(selection) {
+    //         const { images, image } = selection;
 
-            return {
-                title: `Gallery block of ${Object.keys(images).length} images`,
-                subtitle: `Alt text: ${image.alt}`,
-                media: image,
-            };
-        },
-    },
+    //         return {
+    //             title: `Gallery block of ${Object.keys(images).length} images`,
+    //             subtitle: `Alt text: ${image.alt}`,
+    //             media: image,
+    //         };
+    //     },
+    // },
 };
